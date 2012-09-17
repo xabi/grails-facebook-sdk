@@ -32,9 +32,7 @@ class FacebookJSTagLib {
 		if (!attrs.locale) attrs.locale = RequestContextUtils.getLocale(request)
 		if (!attrs.locale) Locale.getDefault()
 		Map model = [body:body()]
-		attrs.each { key, value ->
-			model[key] = value	
-		}
+        model.putAll(attrs)
 		out << render(template:"/facebook-sdk/init-js", model:model, plugin:"facebook-sdk")
 	}
 	
@@ -49,9 +47,7 @@ class FacebookJSTagLib {
 	*/
 	def loginLink = { attrs, body ->
 		Map model = [body:body()]
-		attrs.each { key, value ->
-			model[key] = value
-		}
+        model.putAll(attrs)
 		out << render(template:"/facebook-sdk/login-link", model:model, plugin:"facebook-sdk")
 	}
 	
@@ -64,9 +60,7 @@ class FacebookJSTagLib {
 	*/
 	def logoutLink = { attrs, body ->
 		Map model = [body:body()]
-		attrs.each { key, value ->
-			model[key] = value
-		}
+        model.putAll(attrs)
 		out << render(template:"/facebook-sdk/logout-link", model:model, plugin:"facebook-sdk")
 	}
 
@@ -100,9 +94,7 @@ class FacebookJSTagLib {
             attrs.queryString += attrs.queryString + 'return_ssl_resources=1'
         }
         Map model = [:]
-        attrs.each { key, value ->
-            model[key] = value
-        }
+        model.putAll(attrs)
         out << render(template:"/facebook-sdk/picture", model:model, plugin:"facebook-sdk")
     }
 
@@ -123,9 +115,7 @@ class FacebookJSTagLib {
      */
     def inviteLink = {attrs, body ->
         Map model = [body:body()]
-        attrs.each { key, value ->
-            model[key] = value
-        }
+        model.putAll(attrs)
         out << render(template:"/facebook-sdk/invite-link", model:model, plugin:"facebook-sdk")
     }
 
@@ -145,9 +135,7 @@ class FacebookJSTagLib {
      */
     def publishLink = {attrs, body ->
         Map model = [body:body()]
-        attrs.each { key, value ->
-            model[key] = value
-        }
+        model.putAll(attrs)
         out << render(template:"/facebook-sdk/publish-link", model:model, plugin:"facebook-sdk")
     }
 
