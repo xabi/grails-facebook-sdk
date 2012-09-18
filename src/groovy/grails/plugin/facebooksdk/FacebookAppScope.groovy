@@ -5,14 +5,14 @@ import org.springframework.web.context.request.RequestContextHolder
 
 abstract class FacebookAppScope {
 	
-	FacebookApp facebookApp
-	
+	long appId = 0
+
 	GrailsWebRequest getRequest() {
 		RequestContextHolder.getRequestAttributes() as GrailsWebRequest
 	}
 	
 	protected String getKeyVariableName(String key) {
-		"fb_${facebookApp.id}_${key}"
+		"fb_${appId}_${key}"
 	}
 	
 }

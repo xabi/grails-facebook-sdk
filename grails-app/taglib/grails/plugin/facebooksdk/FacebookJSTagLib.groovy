@@ -1,7 +1,5 @@
 package grails.plugin.facebooksdk
 
-import org.springframework.web.servlet.support.RequestContextUtils
-
 class FacebookJSTagLib {
 
     static String TYPE_LARGE = 'large'
@@ -29,9 +27,10 @@ class FacebookJSTagLib {
 	*/
 	def initJS = { attrs, body ->
 		if (!attrs.containsKey("cookie")) attrs.cookie = true
-		if (!attrs.locale) Locale.getDefault()
+        if (!attrs.locale) attrs.locale = Locale.getDefault()
 		Map model = [body:body()]
         model.putAll(attrs)
+
 		out << render(template:"/facebook-sdk/init-js", model:model, plugin:"facebook-sdk")
 	}
 	
